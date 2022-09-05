@@ -98,8 +98,11 @@ public class ObjectTests
             int? first = null;
             int? second = null;
 
+            // https://github.com/dotnet/roslyn-analyzers/issues/6149
+#pragma warning disable CA2013
             // Act
             var result = ReferenceEquals(first, second);
+#pragma warning restore CA2013
 
             // Assert
             Assert.True(result);
@@ -126,8 +129,13 @@ public class ObjectTests
             int? first = null;
             string? second = null;
 
+            // https://github.com/dotnet/roslyn-analyzers/issues/6149
+#pragma warning disable CA2013
+            // See comment by collinstevens on https://www.jetbrains.com/help/rider/ConditionIsAlwaysTrueOrFalse.html
+            // ReSharper disable once ConditionIsAlwaysTrueOrFalse
             // Act
             var result = ReferenceEquals(first, second);
+#pragma warning restore CA2013
 
             // Assert
             Assert.True(result);
@@ -140,8 +148,13 @@ public class ObjectTests
             string? first = null;
             int? second = null;
 
+            // https://github.com/dotnet/roslyn-analyzers/issues/6149
+#pragma warning disable CA2013
+            // See comment by collinstevens on https://www.jetbrains.com/help/rider/ConditionIsAlwaysTrueOrFalse.html
+            // ReSharper disable once ConditionIsAlwaysTrueOrFalse
             // Act
             var result = ReferenceEquals(first, second);
+#pragma warning restore CA2013
 
             // Assert
             Assert.True(result);
