@@ -14,7 +14,7 @@ public class RegexAssertions
         [InlineData(" abc")]
         [InlineData("abc ")]
         [InlineData(" abc ")]
-        public void ShouldReturnFalseIfOnlyMatchesSubsetOfInput(string input)
+        public void ShouldReturnFalseWhenInputContainsSubsetOfPatternAndMoreThanPattern(string input)
         {
             // Arrange
             var regex = new Regex("^[a-z]+$");
@@ -24,6 +24,22 @@ public class RegexAssertions
             
             // Assert
             Assert.False(matches);
+        }
+        
+        [Theory]
+        [InlineData("abc")]
+        [InlineData("abcd")]
+        [InlineData("bcd")]
+        public void ShouldReturnTrueWhenInputContainsSubsetOfPattern(string input)
+        {
+            // Arrange
+            var regex = new Regex("^[a-z]+$");
+            
+            // Act
+            var matches = regex.IsMatch(input);
+            
+            // Assert
+            Assert.True(matches);
         }
     }
 }
